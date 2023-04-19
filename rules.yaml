@@ -2,8 +2,8 @@ rules:
 - title: Dimension name not in snake case
   code: D101
   rationale: Dimension names should match the conventional format, which is snake
-    case—words in lowercase, separated by underscores. For example, **order_id** instead
-    of **orderId** or **OrderID**.
+    case—words in lowercase, separated by underscores. For example, `order_id` instead
+    of `orderId` or `OrderID`.
   select:
   - dimension
   - dimension_group
@@ -13,8 +13,8 @@ rules:
 - title: Measure name not in snake case
   code: M103
   rationale: Measure names should match the conventional format, which is snake case—words
-    in lowercase, separated by underscores. For example, **count_orders** instead
-    of **OrderCount**.
+    in lowercase, separated by underscores. For example, `count_orders` instead of
+    `OrderCount`.
   select:
   - measure
   regex: ^[_a-z0-9]+$
@@ -23,8 +23,8 @@ rules:
 - title: View name not in snake case
   code: V100
   rationale: View names should match the conventional format, which is snake case—words
-    in lowercase, separated by underscores. For example, **all_orders** instead of
-    **allOrders** or **AllOrders**.
+    in lowercase, separated by underscores. For example, `all_orders` instead of `allOrders`
+    or `AllOrders`.
   select:
   - view
   regex: ^\+?[_a-z0-9]+$
@@ -86,7 +86,7 @@ rules:
   type: PatternMatchRule
 - title: Yesno dimension doesn't start with 'is_' or 'has_'
   code: D100
-  rationale: Wording the name of a **yesno** dimension as a question makes it clear
+  rationale: Wording the name of a `yesno` dimension as a question makes it clear
     to the user what a yes or no value represents.
   select:
   - dimension
@@ -112,9 +112,9 @@ rules:
   code: D200
   rationale: "When Looker creates the underlying dimensions, Looker appends the name\
     \ of the timeframe to the dimension group name. For example, for a dimension group\
-    \ called **order_date**, Looker will create dimensions with redundant names: order_date_date,\
-    \ order_date_month, order_date_year, etc. \n\nInstead, use **order** as the dimension\
-    \ group name, which becomes **order_date**, **order_month**, etc."
+    \ called `order_date`, Looker will create dimensions with redundant names: `order_date_date`,\
+    \ `order_date_month`, `order_date_year`, etc. \n\nInstead, use `order` as the\
+    \ dimension group name, which becomes `order_date`, `order_month`, etc."
   select:
   - dimension_group
   regex: _(?:at|date|time)$
@@ -142,7 +142,7 @@ rules:
     Explore in menus. Looker generates title-cased names for Explores based on the
     name in LookML, but these names aren''t always useful for users. For example,
     an auto-generated Explore name **Prod Sessions L3d** (generated from explore:
-    prod_sessions_l3d) is not as succinct or informational as **Web Sessions**.'
+    `prod_sessions_l3d`) is not as succinct or informational as **Web Sessions**.'
   select:
   - explore
   criteria:
@@ -187,7 +187,7 @@ rules:
   code: V110
   rationale: Views must define a primary key so that any Explores that reference them
     can take advantage of symmetric aggregates and join them properly to views. This
-    rule only applies to views that have defined a **sql_table_name** or **derived_table**
+    rule only applies to views that have defined a `sql_table_name` or `derived_table`
     parameter.
   select:
   - view
@@ -213,7 +213,7 @@ rules:
     view in Explores. Looker generates title-cased names for views based on the view
     name in LookML, but these names aren''t always useful for users in Explores. For
     example, an auto-generated view name **Prod Sessions L3d** (generated from view:
-    prod_sessions_l3d) is not as succinct or informational as **Web Sessions**.'
+    `prod_sessions_l3d`) is not as succinct or informational as **Web Sessions**.'
   select:
   - view
   criteria:
@@ -291,7 +291,7 @@ rules:
   type: OrderRule
 - title: Dimension label includes redundant "Yes/No"
   code: D303
-  rationale: For **yesno** dimensions, Looker adds "Yes/No" to the end of the dimension's
+  rationale: For `yesno` dimensions, Looker adds "Yes/No" to the end of the dimension's
     label by default, so there's no need to include it in the label.
   select:
   - dimension.label
@@ -300,7 +300,7 @@ rules:
   type: PatternMatchRule
 - title: View uses the same table as another view
   code: V112
-  rationale: Views should not have the same **sql_table_name** because two views with
+  rationale: Views should not have the same `sql_table_name` because two views with
     the same table name are effectively the same view. Instead, consolidate these
     views into a single view.
   select:
@@ -334,7 +334,7 @@ rules:
   type: PatternMatchRule
 - title: Include uses a wildcard
   code: I100
-  rationale: Including all views using a wildcard (e.g. *.view) slows down LookML
+  rationale: Including all views using a wildcard (e.g. `*.view`) slows down LookML
     compilation and validation. Instead, explicitly include the specific views that
     you need.
   select:
@@ -344,10 +344,9 @@ rules:
   type: PatternMatchRule
 - title: Join doesn't define its relationship explicitly
   code: J100
-  rationale: 'If the **relationship** parameter for a join is omitted, Looker will
-    use a default relationship of **many_to_one**. However, it''s better to define
-    the relationship explicitly so that developers scanning the code can quickly understand
-    the join.
+  rationale: 'If the `relationship` parameter for a join is omitted, Looker will use
+    a default relationship of `many_to_one`. However, it''s better to define the relationship
+    explicitly so that developers scanning the code can quickly understand the join.
 
 
     Explicitly defining the relationship can also help prevent errors caused by mistyping
@@ -359,3 +358,4 @@ rules:
     parameter_name: relationship
   negative: false
   type: ParameterRule
+
